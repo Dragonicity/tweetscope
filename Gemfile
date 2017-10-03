@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'twitter', '~> 5.16'
 gem 'newrelic_rpm'
 gem 'will_paginate'
+gem 'memcachier'
+gem 'dalli'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

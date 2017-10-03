@@ -2,27 +2,27 @@
 
 <h2>Keywords</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Word</th>
-      <th>Count</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @keywords.each do |keyword| %>
+<% cache('keywords_home_table') do %>
+  <table>
+    <thead>
       <tr>
-        <td><%= keyword.word %></td>
-        <td><%= keyword.tweets.count %>
-        <td><%= link_to 'Show', keyword %></td>
-        <td><%= link_to 'Edit', edit_keyword_path(keyword) %></td>
-        <td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Word</th>
+        <th>Count</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </thead>
+    <tbody>
+      <% @keywords.each do |keyword| %>
+        <tr>
+          <td><%= keyword.word %></td>
+          <td><%= keyword.tweets.count %>
+          <td><%= link_to 'Show', keyword %></td>
+          <td><%= link_to 'Edit', edit_keyword_path(keyword) %></td>
+          <td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 <br>
 
 <%= link_to 'New Keyword', new_keyword_path %>
