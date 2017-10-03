@@ -12,9 +12,8 @@
       <li><img src="<%= twitt.user_image_url %>" width="30"> <%= twitt.user_screen_name %> <%= twitt.text %>  %></li>
     <% end %>
   </ul>
+  <%= will_paginate @tweets %>
 <% end %>
-
-<%= will_paginate @tweets %>
 
 <%= link_to 'Edit', edit_keyword_path(@keyword) %> |
 <%= link_to 'Back', keywords_path %>
