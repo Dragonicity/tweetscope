@@ -5,12 +5,14 @@
   <%= @keyword.word %>
 </p>
 
-<h2>Latest Tweets  (<%= @keyword.tweets.count %>)</h2>
-<ul>
-  <% @tweets.each do |twitt| %>
-    <li><img src="<%= twitt.user_image_url %>" width="30"> <%= twitt.user_screen_name %> <%= twitt.text %>  %></li>
-  <% end %>
-</ul>
+<% cache "keyword_show_id#{@keyword.id}_p#{params[:page]}", skip_digest: true, expires_in: 5.minutes do %>
+  <h2>Latest Tweets  (<%= @keyword.tweets.count %>)</h2>
+  <ul>
+    <% @tweets.each do |twitt| %>
+      <li><img src="<%= twitt.user_image_url %>" width="30"> <%= twitt.user_screen_name %> <%= twitt.text %>  %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= will_paginate @tweets %>
 
